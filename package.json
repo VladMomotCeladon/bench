@@ -1,27 +1,42 @@
 {
-  "name": "nextjs-strapi-static-site",
+  "name": "strapi-backend",
   "version": "0.1.0",
   "private": true,
+  "description": "A Strapi application",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "rebuild": "npm run build && npm run start",
-    "webhook": "node webhook-server.js"
+    "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "dev": "strapi develop",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "setup": "node scripts/setup.js"
   },
   "dependencies": {
-    "express": "^4.21.2",
-    "next": "14.0.0",
-    "react": "^18",
-    "react-dom": "^18"
+    "@strapi/plugin-cloud": "5.25.0",
+    "@strapi/plugin-users-permissions": "5.25.0",
+    "@strapi/strapi": "5.25.0",
+    "better-sqlite3": "11.3.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.0",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "04d41fb4-09b7-45c9-ac34-27b4a94da3ba",
+    "installId": "e4b6d09e804c365343dc874a35e0369449c8b695d6e7df128631f3e140a3b6ea"
   }
 }

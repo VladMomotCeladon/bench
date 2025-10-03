@@ -9,10 +9,6 @@ Icon
 .Spotlight-V100
 .Trashes
 ._*
-.env.local
-node_modules/
-.next
-out/
 
 
 ############################

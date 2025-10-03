@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "homepage_contents",
+  "info": {
+    "singularName": "homepage-content",
+    "pluralName": "homepage-contents",
+    "displayName": "Homepage Content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

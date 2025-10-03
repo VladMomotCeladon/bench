@@ -1,0 +1,4 @@
+{
+  "title": "Hello World!",
+  "content": "This is a static site generated with Next.js and powered by Strapi CMS. You can edit this content in Strapi and rebuild the site to see changes."
+}
