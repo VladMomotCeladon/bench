@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "rebuild": "npm run build && npm run start"
+    "rebuild": "npm run build && npm run start",
+    "webhook": "node webhook-server.js"
   },
   "dependencies": {
+    "express": "^4.21.2",
     "next": "14.0.0",
     "react": "^18",
     "react-dom": "^18"
