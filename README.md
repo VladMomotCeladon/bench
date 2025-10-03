@@ -1,61 +1,54 @@
-# 🚀 Getting started with Strapi
+# Configuration Guide
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+## Environment Variables
 
-### `develop`
+Create a `.env.local` file in the root directory with the following content:
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
-
+```env
+# Strapi Configuration
+NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
+STRAPI_API_TOKEN=your_strapi_api_token_here
 ```
+
+## Quick Start Commands
+
+### 1. Complete Project Setup
+```bash
+./setup-project.sh
+```
+
+### 2. Start Strapi Backend
+```bash
+cd strapi-backend
 npm run develop
-# or
-yarn develop
 ```
 
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
-
-```
-npm run start
-# or
-yarn start
+### 3. Start Next.js Frontend
+```bash
+npm run dev
 ```
 
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
+### 4. Rebuild Static Site
+```bash
+./rebuild.sh
 ```
 
-## ⚙️ Deployment
+## What's Already Configured
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+✅ **Strapi Content Type**: "Homepage Content" with title and content fields
+✅ **API Permissions**: Public access enabled for homepage content
+✅ **Initial Data**: Sample content already created
+✅ **Bootstrap Script**: Automatically sets up permissions and data on first run
+✅ **Next.js Integration**: Ready to fetch from Strapi API
 
-```
-yarn strapi deploy
-```
+## API Endpoints
 
-## 📚 Learn more
+- **Strapi Admin**: http://localhost:1337/admin
+- **Homepage Content API**: http://localhost:1337/api/homepage-contents
+- **Next.js Site**: http://localhost:3000 (after running `npm run dev`)
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+## Workflow
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+1. **Edit content** in Strapi admin panel
+2. **Run `./rebuild.sh`** to rebuild the static site
+3. **Deploy** the `out` directory to your hosting provider

@@ -9,6 +9,10 @@ if [ ! -d "node_modules" ]; then
     npm install
 fi
 
+# Fetch content from Strapi before building
+echo "📡 Fetching content from Strapi..."
+node fetch-content.js
+
 # Build the static site
 echo "🔨 Building static site..."
 npm run build
