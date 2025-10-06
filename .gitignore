@@ -129,3 +129,21 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+
+############################
+# Next.js
+############################
+
+.next/
+out/
+build-temp/
+content.json
+
+############################
+# Environment files
+############################
+
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

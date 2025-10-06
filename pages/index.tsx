@@ -41,7 +41,7 @@ export default function Home({ content }: HomeProps) {
             marginBottom: '1rem',
             color: '#1e293b'
           }}>
-            {content?.title || 'Hello World!ßß!'}
+            {content?.title || 'Hello World!'}
           </h1>
           
           <p style={{
@@ -63,17 +63,6 @@ export default function Home({ content }: HomeProps) {
             <p><strong>Last updated:</strong> {content?.updatedAt ? new Date(content.updatedAt).toLocaleString() : 'Never'}</p>
             <p><strong>Content ID:</strong> {content?.id || 'N/A'}</p>
           </div>
-        </div>
-        
-        <div style={{
-          marginTop: '2rem',
-          padding: '1rem',
-          backgroundColor: '#e0f2fe',
-          borderRadius: '8px',
-          fontSize: '0.875rem',
-          color: '#0369a1'
-        }}>
-          <p>💡 <strong>Tip:</strong> To update this content, modify it in Strapi and run <code>npm run rebuild</code></p>
         </div>
       </main>
     </>
