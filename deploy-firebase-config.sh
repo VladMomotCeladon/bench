@@ -73,53 +73,12 @@ npm install
 
 echo "📡 Fetching content from Strapi..."
 
-# Create fetch-content.js script
-cat > fetch-content.js << 'EOF'
-const fetch = require('node-fetch');
-const fs = require('fs');
-const path = require('path');
-
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
-const API_TOKEN = process.env.STRAPI_API_TOKEN || '';
-
-async function fetchAndSaveContent() {
-  try {
-    console.log('📡 Fetching content from:', STRAPI_URL);
-    
-    const response = await fetch(`${STRAPI_URL}/api/homepage-contents?populate=*`, {
-      headers: {
-        'Authorization': `Bearer ${API_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-      signal: AbortSignal.timeout(10000)
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch content: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    const sortedData = data.data?.sort((a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    );
-    const latestContent = sortedData?.[0] || null;
-
-    const contentPath = path.join(__dirname, 'content.json');
-    fs.writeFileSync(contentPath, JSON.stringify(latestContent, null, 2));
-    console.log('✅ Content fetched and saved to content.json');
-  } catch (error) {
-    console.error('❌ Error fetching content for build:', error);
-    // Create an empty content.json or fallback to default
-    const contentPath = path.join(__dirname, 'content.json');
-    fs.writeFileSync(contentPath, JSON.stringify(null, null, 2));
-  }
-}
-
-fetchAndSaveContent();
-EOF
-
-# Run the fetch script
-node fetch-content.js
+# Use the existing fetch-content.js from the repository
+if [ -f "fetch-content.js" ]; then
+    node fetch-content.js
+else
+    echo "⚠️ fetch-content.js not found, skipping content fetch"
+fi
 
 # =============================================================================
 # BUILD STATIC SITE
