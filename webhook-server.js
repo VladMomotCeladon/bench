@@ -10,15 +10,15 @@ app.use(express.json());
 
 // Webhook endpoint
 app.post('/webhook/rebuild', (req, res) => {
-  console.log('🚀 Webhook triggered! Rebuilding site...');
+  console.log('🚀 Webhook triggered! Deploying from GitHub to Firebase...');
   
-  // Execute the rebuild script
+  // Execute the Firebase deployment script
   const projectPath = __dirname;
-  const rebuildCommand = `cd ${projectPath} && ./rebuild.sh`;
+  const deployCommand = `cd ${projectPath} && ./deploy-firebase-config.sh`;
   
-  exec(rebuildCommand, (error, stdout, stderr) => {
+  exec(deployCommand, (error, stdout, stderr) => {
     if (error) {
-      console.error('❌ Rebuild failed:', error);
+      console.error('❌ Firebase deployment failed:', error);
       return res.status(500).json({ 
         success: false, 
         error: error.message,
@@ -26,12 +26,12 @@ app.post('/webhook/rebuild', (req, res) => {
       });
     }
     
-    console.log('✅ Rebuild completed successfully!');
+    console.log('✅ Firebase deployment completed successfully!');
     console.log('📝 Output:', stdout);
     
     res.json({ 
       success: true, 
-      message: 'Site rebuilt successfully',
+      message: 'Site deployed to Firebase successfully',
       output: stdout 
     });
   });
